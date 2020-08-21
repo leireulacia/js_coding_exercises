@@ -37,13 +37,11 @@ function getMiddleCharacter(str) {
   //even length
   if(str.length % 2 === 0) { 
     initPosition = str.length / 2 - 1;
-    console.log (initPosition);
     length = 2;
 
   } else {
     //odd length
     initPosition = str.length / 2;
-    console.log (initPosition);
     length = 1;
   }
 
@@ -74,7 +72,7 @@ function countLinuxUsers(users) {
   var count=0;
   for (var i=0;i<=users.length-1;i++)
   {
-    if (users[i].type==='Linux'){
+    if (((users[i].type).toUpperCase())==='LINUX'){
       count++;
     }
   }
