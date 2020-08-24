@@ -1,13 +1,13 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   const arrayNums = [];
-  for (let i = 0; i <= nums.length - 1; i++) {
 
-    if (nums[i] < 1) {
-      arrayNums.push(nums[i]);
+  nums.forEach(function (num) {
+    if (num < 1) {
+      arrayNums.push(num);
     }
+  });
 
-  }
   return arrayNums;
 }
 
@@ -16,13 +16,12 @@ function findNamesBeginningWith(names, char) {
   if (!char) throw new Error("char is required");
   const arrayNames = [];
 
-  for (let i = 0; i <= names.length - 1; i++) {
-
-    if ((names[i].charAt(0).toUpperCase()) === (char.toUpperCase())) {
-      arrayNames.push(names[i]);
+  names.forEach(function (name) {
+    // ToUpperCase to be non case sensitive
+    if ((name.charAt(0).toUpperCase()) === (char.toUpperCase())) {
+      arrayNames.push(name);
     }
-
-  }
+  });
 
   return arrayNames;
 }
@@ -31,13 +30,13 @@ function findVerbs(words) {
   if (!words) throw new Error("words is required");
   const arrayVerbs = [];
 
-  for (let i = 0; i <= words.length - 1; i++) {
-
-    if (((words[i].charAt(0).toUpperCase()) === "T") && ((words[i].charAt(1).toUpperCase()) === "O") && ((words[i].charAt(2).toUpperCase()) === " ")) {
-      arrayVerbs.push(words[i]);
+  words.forEach(function (word) {
+    // Check the first 2 characters: TO and the 3rd character must to be an space
+    if (((word.charAt(0).toUpperCase()) === "T") && ((word.charAt(1).toUpperCase()) === "O") && ((word.charAt(2).toUpperCase()) === " ")) {
+      arrayVerbs.push(word);
     }
 
-  }
+  });
 
   return arrayVerbs;
 }
@@ -46,13 +45,14 @@ function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
   const arrayFloat = [];
 
-  for (let i = 0; i <= nums.length - 1; i++) {
-
-    if (nums[i] % 1 === 0) {
-      arrayFloat.push(nums[i]);
+  nums.forEach(function (num) {
+    // The num is divide by itself
+    if (num % 1 === 0) {
+      arrayFloat.push(num);
     }
 
-  }
+  });
+
   return arrayFloat;
 }
 
@@ -60,11 +60,13 @@ function getCities(users) {
   if (!users) throw new Error("users is required");
   const arrayCities = [];
 
-  for (let i = 0; i <= users.length - 1; i++) {
+  users.forEach(function (userData) {
 
-    arrayCities.push(users[i].data.city.displayName);
+    arrayCities.push(userData.data.city.displayName);
 
-  }
+
+  });
+
   return arrayCities;
 }
 
@@ -72,10 +74,13 @@ function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
 
   const arrayNums = [];
-  for (let i = 0; i <= nums.length - 1; i++) {
 
-    arrayNums.push(Math.round(((Math.sqrt(nums[i])) * 100)) / 100);
-  }
+  nums.forEach(function (num) {
+    // Use Math.sqrt to get the square root and the keep only 2 decimals
+    arrayNums.push(Math.round(((Math.sqrt(num)) * 100)) / 100);
+
+  });
+
   return arrayNums;
 }
 
@@ -83,13 +88,15 @@ function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
   const arraySenteces = [];
-  for (let i = 0; i <= sentences.length - 1; i++) {
 
-    if ((sentences[i].toUpperCase()).indexOf(str.toUpperCase()) >= 0) {
-      arraySenteces.push(sentences[i]);
+  sentences.forEach(function (sent) {
+
+    if ((sent.toUpperCase()).indexOf(str.toUpperCase()) >= 0) {
+      arraySenteces.push(sent);
     }
 
-  }
+  });
+
   return arraySenteces;
 }
 
@@ -98,17 +105,18 @@ function getLongestSides(triangles) {
   const arrayNum = [];
   let currentNum;
 
-  for (let i = 0; i <= triangles.length - 1; i++) {
-     currentNum = triangles[i][0];
-    for (let j = 0; j <= triangles[i].length - 1; j++) {
-
-      if ((triangles[i][j] > currentNum) && (triangles.indexOf(triangles[i][j]) < 0)) {
-        currentNum = triangles[i][j];
+  triangles.forEach(function (sideArray) {
+    currentNum = sideArray[0];
+    sideArray.forEach(function (num) {
+      // IndexOf to check if it is already in the array
+      if ((num > currentNum) && (sideArray.indexOf(num < 0))) {
+        currentNum = num;
       }
 
-    }
+    });
     arrayNum.push(currentNum);
-  }
+  });
+
   return arrayNum;
 }
 
