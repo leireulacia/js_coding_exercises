@@ -1,10 +1,10 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
-  const arrayNums = [];
-
-  nums.forEach(function (num) {
-    if (num < 1) {
-      arrayNums.push(num);
+  const arrayNums  = nums.filter(function (num) {
+    if (num <1) {
+      return true;
+    } else {
+      return false;
     }
   });
 
@@ -14,12 +14,12 @@ function findSmallNums(nums) {
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  const arrayNames = [];
-
-  names.forEach(function (name) {
+  const arrayNames = names.filter(function (name) {
     // ToUpperCase to be non case sensitive
     if ((name.charAt(0).toUpperCase()) === (char.toUpperCase())) {
-      arrayNames.push(name);
+      return true;
+    } else {
+      return false;
     }
   });
 
@@ -28,30 +28,28 @@ function findNamesBeginningWith(names, char) {
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
-  const arrayVerbs = [];
-
-  words.forEach(function (word) {
+  const arrayVerbs = words.filter(function (word) {
     // Check the first 2 characters: TO and the 3rd character must to be an space
     if (((word.charAt(0).toUpperCase()) === "T") && ((word.charAt(1).toUpperCase()) === "O") && ((word.charAt(2).toUpperCase()) === " ")) {
-      arrayVerbs.push(word);
+      return true;
+    } else {
+      return false;
     }
-
   });
 
-  return arrayVerbs;
+   return arrayVerbs;
 }
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
-  const arrayFloat = [];
-
-  nums.forEach(function (num) {
-    // The num is divide by itself
+  const arrayFloat = nums.filter(function (num) {
     if (num % 1 === 0) {
-      arrayFloat.push(num);
+      return true;
+    } else {
+      return false;
     }
-
   });
+
 
   return arrayFloat;
 }
@@ -64,7 +62,6 @@ function getCities(users) {
 
     arrayCities.push(userData.data.city.displayName);
 
-
   });
 
   return arrayCities;
@@ -73,12 +70,11 @@ function getCities(users) {
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
 
-  const arrayNums = [];
-
-  nums.forEach(function (num) {
-    // Use Math.sqrt to get the square root and the keep only 2 decimals
-    arrayNums.push(Math.round(((Math.sqrt(num)) * 100)) / 100);
-
+  const arrayNums = nums.map(function (num) {
+    // Access to each item, one by one and transform to the square root
+    const squareRoot = Math.round(((Math.sqrt(num)) * 100)) / 100;
+   
+    return squareRoot;
   });
 
   return arrayNums;
@@ -87,14 +83,12 @@ function getSquareRoots(nums) {
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  const arraySenteces = [];
-
-  sentences.forEach(function (sent) {
-
+  const arraySenteces = sentences.filter(function (sent) {
     if ((sent.toUpperCase()).indexOf(str.toUpperCase()) >= 0) {
-      arraySenteces.push(sent);
+      return true;
+    } else {
+      return false;
     }
-
   });
 
   return arraySenteces;
@@ -105,7 +99,7 @@ function getLongestSides(triangles) {
   const arrayNum = [];
   let currentNum;
 
-  triangles.forEach(function (sideArray) {
+   triangles.forEach(function (sideArray) {
     currentNum = sideArray[0];
     sideArray.forEach(function (num) {
       // IndexOf to check if it is already in the array
