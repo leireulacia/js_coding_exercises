@@ -70,7 +70,7 @@ function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   var count = 0;
   for (var i = 0; i <= users.length - 1; i++) {
-    if (((users[i].type).toUpperCase()) === 'LINUX') {
+    if (((users[i].type).toUpperCase()) === "LINUX") {
       count++;
     }
   }
@@ -92,11 +92,11 @@ function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
   var result;
   if (n % 3 === 0 && n % 5 === 0)
-    result = 'fizzbuzz';
+    result = "fizzbuzz";
   else if (n % 3 === 0)
-    result = 'fizz';
+    result = "fizz";
   else if (n % 5 === 0)
-    result = 'buzz';
+    result = "buzz";
   else
     result = n;
 

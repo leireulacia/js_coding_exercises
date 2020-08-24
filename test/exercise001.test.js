@@ -16,7 +16,7 @@ describe("capitalize", () => {
     expect(capitalize("hello")).toBe("Hello");
     expect(capitalize("the quick fox")).toBe("The quick fox");
     expect(capitalize("oh no, bears!!!")).toBe("Oh no, bears!!!");
-  });
+      });
 
   test("does nothing if the string is already capitalized", () => {
     expect(capitalize("Hello")).toBe("Hello");
@@ -26,6 +26,7 @@ describe("capitalize", () => {
 describe("generateInitials", () => {
   test("returns the initials of a firstname and surname", () => {
     expect(generateInitials("Frederic", "Bonneville")).toBe("F.B");
+    expect(generateInitials("Paul", "Mccartney")).toBe("P.M");
   });
 });
 
