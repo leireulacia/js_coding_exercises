@@ -8,7 +8,6 @@ function findSmallNums(nums) {
     }
 
   }
-
   return arrayNums;
 }
 
