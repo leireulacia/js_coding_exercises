@@ -7,9 +7,9 @@
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
   if (!Array.isArray(arr)) throw new Error("an Array is requiered");
-  let sum=0;
-  arr.forEach  (num => {
-      if (num % 3 === 0 || num % 5 === 0){
+  let sum = 0;
+  arr.forEach(num => {
+    if (num % 3 === 0 || num % 5 === 0) {
       sum += num;
     }
   });
@@ -23,14 +23,12 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  let result=true;
+  let result = true;
 
-  for (let i=0;i<=str.length-1;i++)
-  {
+  for (let i = 0; i <= str.length - 1; i++) {
 
-    if ((str[i]!="A")&&(str[i]!="G")&&(str[i]!="T")&&(str[i]!="C"))
-    {
-      result= false;
+    if ((str[i] != "A") && (str[i] != "G") && (str[i] != "T") && (str[i] != "C")) {
+      result = false;
     }
 
   }
@@ -44,32 +42,25 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  if (isValidDNA(str)===false) throw new Error("the string is not a valid DNA");
-  let complementDNA="";
-  
- for (let i=0;i<=str.length-1;i++)
-  {
-   
-    if ((str[i]==="T"))
-    {
+  if (isValidDNA(str) === false) throw new Error("the string is not a valid DNA");
+  let complementDNA = "";
+
+  for (let i = 0; i <= str.length - 1; i++) {
+
+    if ((str[i] === "T")) {
       complementDNA += "A";
     }
-    if ((str[i]==="A"))
-    {
+    if ((str[i] === "A")) {
       complementDNA += "T";
     }
-    if ((str[i]==="G"))
-    {
+    if ((str[i] === "G")) {
       complementDNA += "C";
     }
-    if ((str[i]==="C"))
-    {
+    if ((str[i] === "C")) {
       complementDNA += "G";
     }
-
   }
-
-  return complementDNA; 
+  return complementDNA;
 };
 
 /**
@@ -80,17 +71,14 @@ const getComplementaryDNA = str => {
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
   if (n <= 1) throw new Error("The prime number should be higher than 1");
-  let result=true;
+  let result = true;
 
-  for(let i = 2; i < n; i++)
-  {
-    if(n % i === 0)
-    {
-      result= false;
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      result = false;
     }
   }
   return result;
-  
 };
 
 /**
@@ -107,12 +95,12 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
-  const newMatrix=new Array(n).fill(fill); // Inizialite an array of n elements and fill all the elements with the "fill" 
+  const newMatrix = new Array(n).fill(fill); // Inizialite an array of n elements and fill all the elements with the "fill" 
 
-  for (let i=0;i<n;i++){
-    newMatrix[i]=new Array(n).fill(fill);
+  for (let i = 0; i < n; i++) {
+    newMatrix[i] = new Array(n).fill(fill);
   }
-  
+
   return newMatrix;
 };
 
@@ -131,26 +119,26 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  let staffAvailable=0;
-  
-  if (staff.length===0){
-  return false;
+  let staffAvailable = 0;
+
+  if (staff.length === 0) {
+    return false;
   }
 
   staff.forEach(arrayStaff => { // Get array of days for each member of staff
-    arrayStaff.rota.forEach (daysStaff=> { // Get each day of the current member of staff
+    arrayStaff.rota.forEach(daysStaff => { // Get each day of the current member of staff
 
-      if ((daysStaff.toLowerCase().indexOf(day.toLowerCase())) >= 0){ // not be case sensitive
+      if ((daysStaff.toLowerCase().indexOf(day.toLowerCase())) >= 0) { // not be case sensitive
         staffAvailable++;
       }
-    
+
     });
 
   });
 
-  if (staffAvailable>= 3){
+  if (staffAvailable >= 3) {
     return true;
-  }else {
+  } else {
     return false;
   }
 };
