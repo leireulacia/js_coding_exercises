@@ -120,27 +120,30 @@ const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
   let staffAvailable = 0;
+  let result = false;
 
   if (staff.length === 0) {
-    return false;
-  }
+    result = false;
+  } else {
 
-  staff.forEach(arrayStaff => { // Get array of days for each member of staff
-    arrayStaff.rota.forEach(daysStaff => { // Get each day of the current member of staff
+    staff.forEach(arrayStaff => { // Get array of days for each member of staff
+      arrayStaff.rota.forEach(daysStaff => { // Get each day of the current member of staff
 
-      if ((daysStaff.toLowerCase().indexOf(day.toLowerCase())) >= 0) { // not be case sensitive
-        staffAvailable++;
-      }
+        if ((daysStaff.toLowerCase().indexOf(day.toLowerCase())) >= 0) { // not be case sensitive
+          staffAvailable++;
+        }
+
+      });
 
     });
 
-  });
-
-  if (staffAvailable >= 3) {
-    return true;
-  } else {
-    return false;
+    if (staffAvailable >= 3) {
+      result = true;
+    } else {
+      result = false;
+    }
   }
+  return result;
 };
 
 module.exports = {
