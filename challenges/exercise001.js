@@ -16,7 +16,7 @@ function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
   //Math.round((x * 100)) / 100 --> to get the number with 2 decimals
-  var total = originalPrice + Math.round(((originalPrice * vatRate) / 100) * 100) / 100;
+  let total = originalPrice + Math.round(((originalPrice * vatRate) / 100) * 100) / 100;
 
   return total;
 }
@@ -24,15 +24,15 @@ function addVAT(originalPrice, vatRate) {
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  var total = originalPrice - Math.round(((originalPrice * reduction) / 100) * 100) / 100;
+  let total = originalPrice - Math.round(((originalPrice * reduction) / 100) * 100) / 100;
 
   return total;
 }
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  var initPosition;
-  var length;
+  let initPosition;
+  let length;
 
   //even length
   if (str.length % 2 === 0) {
@@ -58,7 +58,7 @@ function reverseWord(word) {
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  var wordofArray = [];
+  const wordofArray = [];
   for (var i = 0; i <= words.length - 1; i++) {
     wordofArray[i] = reverseWord(words[i]);
   }
@@ -68,7 +68,7 @@ function reverseAllWords(words) {
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  var count = 0;
+  let count = 0;
   for (var i = 0; i <= users.length - 1; i++) {
     if (((users[i].type).toUpperCase()) === "LINUX") {
       count++;
@@ -79,7 +79,7 @@ function countLinuxUsers(users) {
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  var mean = 0;
+  let mean = 0;
   for (var i = 0; i <= scores.length - 1; i++) {
     mean = mean + scores[i];
   }
