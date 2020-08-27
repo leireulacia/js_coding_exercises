@@ -113,7 +113,7 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
-  if ((hexStr.charAt(0) != "#") || (hexStr.length > 7)) throw new Error("this is not a right color code format");
+  if ((hexStr.charAt(0) != "#") || (hexStr.length != 7)) throw new Error("this is not a right color code format");
 
   return ("rgb(" + parseInt((hexStr.substr(1, 2)), 16) + "," + parseInt((hexStr.substr(3, 2)), 16) + "," + parseInt((hexStr.substr(5, 2)), 16) + ")");
 };
@@ -136,14 +136,13 @@ const findWinner = board => {
   // Check the rows
   for (let i = 0; i < board.length; i++) {
     let sum = 1;
-    for (let j = 0; j < board[i].length; j++) {
+    for (let j = 1; j < board[i].length; j++) {
       if (board[i][j] === board[i][j - 1]) {
         sum += 1;
       }
-
-      if (sum === 3) {
-        winner = board[i][0];
-      }
+    }
+    if (sum === board[i].length) {
+      winner = board[i][0];
     }
 
   }
@@ -160,16 +159,16 @@ const findWinner = board => {
         if (board[i][j] === board[i + 1][j]) {
           sum += 1;
         }
-        
-        if (sum === 3) {
+        if (sum === board[i].length) {
           winner = board[0][j];
         }
       }
+
       j++;
     } while (j < board[i].length);
   }
 
-  // Check the diagonals
+  // Check the diagonals (left to right)
   if (winner === "no winner") {
     let sum = 1;
     let i = 0;
@@ -181,7 +180,7 @@ const findWinner = board => {
         sum += 1;
       }
 
-      if (sum === 3) {
+      if (sum === board[i].length) {
         winner = board[i][j];
       }
 
@@ -192,6 +191,7 @@ const findWinner = board => {
 
   }
 
+  // Check the diagonals (right to left)
   if (winner === "no winner") {
     let sum = 1;
     let i = 0;
@@ -203,7 +203,7 @@ const findWinner = board => {
         sum += 1;
       }
 
-      if (sum === 3) {
+      if (sum === board[i].length) {
         winner = board[i][j];
       }
 
