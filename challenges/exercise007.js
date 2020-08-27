@@ -4,6 +4,15 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  if (!Number.isInteger(n)) throw new Error("n should be an integer");
+  let result = 0;
+  let arrDigits = Array.from(n.toString());
+
+  arrDigits.forEach(digit => {
+    result += parseInt(digit);
+  });
+
+  return result;
 };
 
 /**
@@ -17,6 +26,25 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if ((!Number.isInteger(start)) || (!Number.isInteger(end)) || ((!Number.isInteger(step)) && step != null)) throw new Error("introduce only integers numbers");
+
+  var newArr = [];
+  let n = 0;
+
+  if (step === undefined) {
+    step = 1;
+  }
+
+  n = ((end - start) / step) + 1;
+
+  if (Number.isInteger(n)) {
+    newArr = new Array(n);
+    newArr[0] = start;
+    for (let i = 1; i < newArr.length; i++) {
+      newArr[i] = newArr[i - 1] + step;
+    }
+  }
+  return newArr;
 };
 
 /**
@@ -51,6 +79,26 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  const arrListUsers = [];
+
+  users.forEach(user => {
+
+    user.screenTime.forEach(screenTime => {
+
+      if (screenTime.date === date) {
+        let minScreen = 0;
+        for (let key in screenTime.usage) {
+          minScreen += screenTime.usage[key];
+        }
+
+        if (minScreen >= 100) {
+          arrListUsers.push(user.username);
+        }
+      }
+    });
+  });
+
+  return arrListUsers;
 };
 
 /**
@@ -65,6 +113,9 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  if ((hexStr.charAt(0) != "#") || (hexStr.length > 7)) throw new Error("this is not a right color code format");
+
+  return ("rgb(" + parseInt((hexStr.substr(1, 2)), 16) + "," + parseInt((hexStr.substr(3, 2)), 16) + "," + parseInt((hexStr.substr(5, 2)), 16) + ")");
 };
 
 /**
@@ -79,6 +130,90 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  let winner = "no winner";
+
+
+  // Check the rows
+  for (let i = 0; i < board.length; i++) {
+    let sum = 1;
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] === board[i][j - 1]) {
+        sum += 1;
+      }
+
+      if (sum === 3) {
+        winner = board[i][0];
+      }
+    }
+
+  }
+
+  // Check the columns
+  if (winner === "no winner") {
+    let j = 0;
+    let i = 0;
+    do {
+      let sum = 1;
+
+      for (i = 0; i < board.length - 1; i++) {
+
+        if (board[i][j] === board[i + 1][j]) {
+          sum += 1;
+        }
+        
+        if (sum === 3) {
+          winner = board[0][j];
+        }
+      }
+      j++;
+    } while (j < board[i].length);
+  }
+
+  // Check the diagonals
+  if (winner === "no winner") {
+    let sum = 1;
+    let i = 0;
+    let j = 0;
+
+    do {
+
+      if (board[i][j] === board[i + 1][j + 1]) {
+        sum += 1;
+      }
+
+      if (sum === 3) {
+        winner = board[i][j];
+      }
+
+      i++;
+      j++;
+
+    } while ((i < board[i].length - 1) && (j < board[i].length - 1));
+
+  }
+
+  if (winner === "no winner") {
+    let sum = 1;
+    let i = 0;
+    let j = board[i].length - 1;
+
+    do {
+
+      if (board[i][j] === board[i + 1][j - 1]) {
+        sum += 1;
+      }
+
+      if (sum === 3) {
+        winner = board[i][j];
+      }
+
+      i++;
+      j--;
+    } while ((i < board[i].length - 1) && (j < board[i].length - 1));
+
+  }
+
+  return winner;
 };
 
 module.exports = {
