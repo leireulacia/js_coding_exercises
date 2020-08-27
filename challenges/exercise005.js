@@ -23,9 +23,9 @@ const count1sand0s = str => {
   for (let i = 0; i <= str.length - 1; i++) {
 
     if (str[i] === "1") {
-      frequencies["1"] = frequencies["1"] + 1;
+      frequencies["1"] += 1;
     } else {
-      frequencies["0"] = frequencies["0"] + 1;
+      frequencies["0"] += 1;
     }
   }
   return frequencies;
@@ -60,7 +60,7 @@ const arrShift = arr => {
   if (arr.length > 1) { //Check if the length of the array is more than 1
     newArray.push(arr[arr.length - 1]); // Add the last element of the array to the first position to the new array
 
-    for (let i = 1; i <= arr.length - 2; i++) {
+    for (let i = 1; i < arr.length - 1; i++) {
       newArray[i] = arr[i]; // Keep the order of the rest of elements until last position
     }
     newArray.push(arr[0]); // Add the first element of the array to the last position to the new array
