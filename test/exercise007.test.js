@@ -197,6 +197,9 @@ describe("hexToRGB", () => {
         expect(() => {
             hexToRGB("#CA34679");
         }).toThrow("this is not a right color code format");
+        expect(() => {
+            hexToRGB("#CA346");
+        }).toThrow("this is not a right color code format");
 
     });
 
@@ -326,6 +329,27 @@ describe("findWinner", () => {
         expect(findWinner(obj2)).toBe("0");
     });
 
+    test("it returns the winner of the game", () => {
+        const obj1 = [
+            ["X", "0", "0"],
+            [null, null, "0"],
+            ["0", "0", "X"]
+        ];
+        const obj2 = [
+            ["0", "X", "0"],
+            ["0", "0", "null"],
+            ["0", null, "0"]
+        ];
+        const obj3 = [
+            ["X", "0", "X"],
+            [null, "X", null],
+            [null, "0", "X"]
+        ];
+        expect(findWinner(obj1)).toBe("no winner");
+        expect(findWinner(obj2)).toBe("0");
+        expect(findWinner(obj3)).toBe("X");
+    });
+
     test("it returns no winner if none of the player has still won", () => {
         const obj1 = [
             ["X", "0", "0"],
@@ -345,6 +369,31 @@ describe("findWinner", () => {
         expect(findWinner(obj1)).toBe("no winner");
         expect(findWinner(obj2)).toBe("no winner");
         expect(findWinner(obj3)).toBe("no winner");
+    });
+
+
+    test("it returns the winner for a board 4*4", () => {
+        const obj1 = [
+            ["0", "0", "0", "0"],
+            ["X", null, "0", null],
+            ["0", "0", "X", "0"],
+            ["0", "0", "X", "0"]
+        ];
+        const obj2 = [
+            ["X", "0", "0", "0"],
+            ["X", null, "0", null],
+            ["0", "0", "X", "0"],
+            ["0", "0", "X", "X"]
+        ];
+        const obj3 = [
+            ["X", "0", "0", "X"],
+            ["X", null, "0", "X"],
+            ["X", "0", "X", "X"],
+            ["0", "0", "X", "X"]
+        ];
+        expect(findWinner(obj1)).toBe("0");
+        expect(findWinner(obj2)).toBe("0");
+        expect(findWinner(obj3)).toBe("X");
     });
 
 });
