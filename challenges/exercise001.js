@@ -80,7 +80,7 @@ function countLinuxUsers(users) {
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
   let mean = 0;
-  for (var i = 0; i <= scores.length - 1; i++) {
+  for (let i = 0; i <= scores.length - 1; i++) {
     mean = mean + scores[i];
   }
   mean = mean / scores.length;
