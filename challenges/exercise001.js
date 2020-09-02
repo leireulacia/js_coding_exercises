@@ -2,7 +2,6 @@ function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
 
   return word.charAt(0).toUpperCase() + word.slice(1);
-
 }
 
 function generateInitials(firstName, lastName) {
@@ -24,6 +23,7 @@ function addVAT(originalPrice, vatRate) {
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
+
   let total = originalPrice - Math.round(((originalPrice * reduction) / 100) * 100) / 100;
 
   return total;
@@ -46,7 +46,6 @@ function getMiddleCharacter(str) {
   }
 
   // substring (initial, position)
-
   return str.substring(initPosition, initPosition + length);
 }
 
@@ -59,27 +58,31 @@ function reverseWord(word) {
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   const wordofArray = [];
+
   for (var i = 0; i <= words.length - 1; i++) {
     wordofArray[i] = reverseWord(words[i]);
   }
-  return wordofArray;
 
+  return wordofArray;
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   let count = 0;
+
   for (var i = 0; i <= users.length - 1; i++) {
     if (((users[i].type).toUpperCase()) === "LINUX") {
       count++;
     }
   }
+
   return count;
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
   let mean = 0;
+
   for (let i = 0; i <= scores.length - 1; i++) {
     mean = mean + scores[i];
   }
@@ -90,17 +93,24 @@ function getMeanScore(scores) {
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  var result;
-  if (n % 3 === 0 && n % 5 === 0)
+
+  return n % 3 === 0 && n % 5 === 0 ? "fizzbuzz"
+          : n % 3 === 0 ? "fizz"
+          : n % 5 === 0 ? "buzz"
+          : n;
+
+ /*The statement above replace: 
+ 
+ if (n % 3 === 0 && n % 5 === 0)
     result = "fizzbuzz";
   else if (n % 3 === 0)
     result = "fizz";
   else if (n % 5 === 0)
     result = "buzz";
   else
-    result = n;
+    result = n;*/
 
-  return result;
+ // return result;
 }
 
 module.exports = {
