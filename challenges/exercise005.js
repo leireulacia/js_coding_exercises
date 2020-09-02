@@ -5,11 +5,7 @@ const findNextNumber = (nums, n) => {
   const numfind = num => num === n; // num should be equal to n
   let index = nums.findIndex(numfind); // First index that satisfies the provided testing function. If it don't find an element, return -1
 
-  if (index === -1 || index === (nums.length - 1)) { // index===nums.length-1 check if it is the last element
-    return null;
-  } else {
-    return nums[index + 1];
-  }
+  return (index === -1 || index === (nums.length - 1))? null:  nums[index + 1]; // index===nums.length-1 check if it is the last element    
 };
 
 const count1sand0s = str => {
@@ -21,13 +17,13 @@ const count1sand0s = str => {
   };
 
   for (let i = 0; i <= str.length - 1; i++) {
-
-    if (str[i] === "1") {
+   if (str[i] === "1") {
       frequencies["1"] += 1;
     } else {
       frequencies["0"] += 1;
     }
   }
+
   return frequencies;
 };
 
@@ -35,8 +31,8 @@ const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
   // First convert into a String, then reverse the string and convert into a integer again.
   // it could use an arrow function if it would delete the if first stament
-  return parseInt(n.toString().split("").reverse().join(""));
 
+  return parseInt(n.toString().split("").reverse().join(""));
 };
 
 const sumArrays = arrs => {
@@ -47,7 +43,6 @@ const sumArrays = arrs => {
     arrayNum.forEach(num => { // Get the elements in each array
       sum += num;
     });
-
   });
 
   return sum;
@@ -59,7 +54,6 @@ const arrShift = arr => {
 
   if (arr.length > 1) { //Check if the length of the array is more than 1
     newArray.push(arr[arr.length - 1]); // Add the last element of the array to the first position to the new array
-
     for (let i = 1; i < arr.length - 1; i++) {
       newArray[i] = arr[i]; // Keep the order of the rest of elements until last position
     }
@@ -81,8 +75,8 @@ const findNeedle = (haystack, searchTerm) => {
       // Use toUpperCase() not to be case sensitive    
       findit = true;
     }
-
   }
+
   return findit;
 };
 
@@ -93,16 +87,18 @@ const getWordFrequencies = str => {
   const word = str.replace(/[^a-zA-Z ]/g, "").split(" "); // Ignore punctuation and convert the sentence into an array of words
 
   for (let i = 0; i < word.length; i++) { // Check each word a time
-
     const wordLowerCase = word[i].toLowerCase(); // Ignore Capitalizations
+    frequencies[wordLowerCase]= (frequencies[wordLowerCase] === undefined)? frequencies[wordLowerCase]=1: frequencies[wordLowerCase] += 1;
+   
+    /* The statement above replace:
 
     if (frequencies[wordLowerCase] === undefined) {
-      frequencies[wordLowerCase] = 1;
-    } else {
-      frequencies[wordLowerCase] += 1;
-    }
-
+        frequencies[wordLowerCase] = 1;
+      } else {
+        frequencies[wordLowerCase] += 1;
+    }*/
   }
+  
   return frequencies;
 };
 
