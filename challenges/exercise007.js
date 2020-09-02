@@ -27,8 +27,7 @@ const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
   if ((!Number.isInteger(start)) || (!Number.isInteger(end)) || ((!Number.isInteger(step)) && step != null)) throw new Error("introduce only integers numbers");
-
-  var newArr = [];
+  let newArr = [];
   let n = 0;
 
   if (step === undefined) {
@@ -44,6 +43,7 @@ const createRange = (start, end, step) => {
       newArr[i] = newArr[i - 1] + step;
     }
   }
+
   return newArr;
 };
 
@@ -82,15 +82,12 @@ const getScreentimeAlertList = (users, date) => {
   const arrListUsers = [];
 
   users.forEach(user => {
-
     user.screenTime.forEach(screenTime => {
-
       if (screenTime.date === date) {
         let minScreen = 0;
         for (let key in screenTime.usage) {
           minScreen += screenTime.usage[key];
         }
-
         if (minScreen >= 100) {
           arrListUsers.push(user.username);
         }
@@ -132,7 +129,6 @@ const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
   let winner = "no winner";
 
-
   // Check the rows
   for (let i = 0; i < board.length; i++) {
     let sum = 1;
@@ -144,7 +140,6 @@ const findWinner = board => {
     if (sum === board[i].length) {
       winner = board[i][0];
     }
-
   }
 
   // Check the columns
@@ -163,7 +158,6 @@ const findWinner = board => {
           winner = board[0][j];
         }
       }
-
       j++;
     } while (j < board[i].length);
   }
@@ -175,20 +169,15 @@ const findWinner = board => {
     let j = 0;
 
     do {
-
       if (board[i][j] === board[i + 1][j + 1]) {
         sum += 1;
       }
-
       if (sum === board[i].length) {
         winner = board[i][j];
       }
-
       i++;
       j++;
-
     } while ((i < board[i].length - 1) && (j < board[i].length - 1));
-
   }
 
   // Check the diagonals (right to left)
@@ -198,19 +187,15 @@ const findWinner = board => {
     let j = board[i].length - 1;
 
     do {
-
       if (board[i][j] === board[i + 1][j - 1]) {
         sum += 1;
       }
-
       if (sum === board[i].length) {
         winner = board[i][j];
       }
-
       i++;
       j--;
     } while ((i < board[i].length - 1) && (j < board[i].length - 1));
-
   }
 
   return winner;

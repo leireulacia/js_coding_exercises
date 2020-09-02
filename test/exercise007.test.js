@@ -14,6 +14,7 @@ describe("sumDigits", () => {
         }).toThrow("n is required");
 
     });
+
     test("it throws an error if number is not an integer", () => {
         expect(() => {
             sumDigits(65.4);
@@ -48,6 +49,7 @@ describe("createRange", () => {
         expect(() => { createRange(1, 7, 2.1); }).toThrow("introduce only integers numbers");
 
     });
+
     test("it returns an array of numbers without provinding the step between them ( step is 1 by default)", () => {
         expect(createRange(1, 6)).toEqual([1, 2, 3, 4, 5, 6]);
         expect(createRange(10, 13)).toEqual([10, 11, 12, 13]);
@@ -68,7 +70,6 @@ describe("createRange", () => {
         expect(createRange(0, 11, 5)).toEqual([]);
         expect(createRange(5, 12, 2)).toEqual([]);
     });
-
 });
 describe("getScreentimeAlertList", () => {
     test("return an empty array if all users have used less than 100 minutes of screentime for a given date", () => {
@@ -121,7 +122,6 @@ describe("getScreentimeAlertList", () => {
         ]
         expect(getScreentimeAlertList(obj, "2019-03-04")).toEqual([]);
     });
-
 
     test("return an array of usernames of users who have used more than 100 minutes of screentime for a given date", () => {
         const obj = [
@@ -189,7 +189,6 @@ describe("getScreentimeAlertList", () => {
 });
 
 describe("hexToRGB", () => {
-
     test("it throws an error if not passed a right colour code format", () => {
         expect(() => {
             hexToRGB("0xFFAE33");
@@ -298,6 +297,7 @@ describe("findWinner", () => {
         expect(findWinner(obj2)).toBe("0");
         expect(findWinner(obj3)).toBe("0");
     });
+
     test("it returns X if X player has the diagonal complete", () => {
         const obj1 = [
             ["X", "0", "0"],
@@ -371,7 +371,6 @@ describe("findWinner", () => {
         expect(findWinner(obj3)).toBe("no winner");
     });
 
-
     test("it returns the winner for a board 4*4", () => {
         const obj1 = [
             ["0", "0", "0", "0"],
@@ -395,5 +394,4 @@ describe("findWinner", () => {
         expect(findWinner(obj2)).toBe("0");
         expect(findWinner(obj3)).toBe("X");
     });
-
 });
