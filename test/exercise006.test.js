@@ -47,16 +47,19 @@ describe("isValidDNA", () => {
         expect(isValidDNA("ATGBCAT")).toBe(false);
         expect(isValidDNA("GCFTACG")).toBe(false);
     });
+
     test("it returns true if the DNA string contains only C, G, T or A ", () => {
         expect(isValidDNA("AGTCGATCGTA")).toBe(true);
         expect(isValidDNA("CGTACGTACGT")).toBe(true);
         expect(isValidDNA("TCGACGTACGT")).toBe(true);
     });
+
     test("it returns false if the DNA string contains only C, G, T or A but some of them are in lower case ", () => {
         expect(isValidDNA("aGTCGaTCGTa")).toBe(false);
         expect(isValidDNA("TCgACgTACgT")).toBe(false);
 
     });
+
     test("it returns false if the DNA string contains a number ", () => {
         expect(isValidDNA("TCG89GTACGT")).toBe(false);
         expect(isValidDNA("TCGACGTA56T")).toBe(false);
@@ -76,8 +79,8 @@ describe("getComplementaryDNA", () => {
         expect(getComplementaryDNA("A")).toBe("T");
         expect(getComplementaryDNA("C")).toBe("G");
         expect(getComplementaryDNA("G")).toBe("C");
-
     });
+    
     test("it returns a string of the complementary base pairs for a validDNA", () => {
         expect(getComplementaryDNA("ACTG")).toBe("TGAC");
         expect(getComplementaryDNA("CGTAC")).toBe("GCATG");
@@ -98,12 +101,14 @@ describe("isItPrime", () => {
             isItPrime(1);
         }).toThrow("The prime number should be higher than 1");
     });
+
     test("it returns false if the number is NOT a prime", () => {
         expect(isItPrime(4)).toBe(false);
         expect(isItPrime(75)).toBe(false);
         expect(isItPrime(168)).toBe(false);
         expect(isItPrime(799)).toBe(false);
     });
+
     test("it returns true if the number IS a prime", () => {
         expect(isItPrime(2)).toBe(true);
         expect(isItPrime(3)).toBe(true);
@@ -112,7 +117,6 @@ describe("isItPrime", () => {
         expect(isItPrime(53)).toBe(true);
         expect(isItPrime(103)).toBe(true);
         expect(isItPrime(839)).toBe(true);
-
     });
 });
 
@@ -120,6 +124,7 @@ describe("createMatrix", () => {
     test("it returns an empty matrix when passed 0", () => {
         expect(createMatrix(0, "foo")).toEqual([]);
     });
+
     test("it returns a matrix of 1*1 when passed 1", () => {
         expect(createMatrix(1, "noo")).toEqual([["noo"]]); // To test complex values like array or objects use toEqul
     });
@@ -159,7 +164,6 @@ describe("areWeCovered", () => {
         expect(areWeCovered([], "Thursday")).toBe(false);
         expect(areWeCovered([], "Friday")).toBe(false);
         expect(areWeCovered([], "Saturday")).toBe(false);
-
     });
 
     test("it returns false if there are staff but < 3 not scheduled to work", () => {

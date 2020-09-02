@@ -8,11 +8,13 @@ const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
   if (!Array.isArray(arr)) throw new Error("an Array is requiered");
   let sum = 0;
+
   arr.forEach(num => {
     if (num % 3 === 0 || num % 5 === 0) {
       sum += num;
     }
   });
+
   return sum;
 };
 
@@ -26,12 +28,11 @@ const isValidDNA = str => {
   let result = true;
 
   for (let i = 0; i <= str.length - 1; i++) {
-
     if ((str[i] != "A") && (str[i] != "G") && (str[i] != "T") && (str[i] != "C")) {
       result = false;
     }
-
   }
+
   return result;
 };
 
@@ -46,7 +47,6 @@ const getComplementaryDNA = str => {
   let complementDNA = "";
 
   for (let i = 0; i <= str.length - 1; i++) {
-
     if ((str[i] === "T")) {
       complementDNA += "A";
     }
@@ -60,6 +60,7 @@ const getComplementaryDNA = str => {
       complementDNA += "G";
     }
   }
+
   return complementDNA;
 };
 
@@ -78,6 +79,7 @@ const isItPrime = n => {
       result = false;
     }
   }
+
   return result;
 };
 
@@ -125,24 +127,17 @@ const areWeCovered = (staff, day) => {
   if (staff.length === 0) {
     result = false;
   } else {
-
     staff.forEach(arrayStaff => { // Get array of days for each member of staff
       arrayStaff.rota.forEach(daysStaff => { // Get each day of the current member of staff
-
         if ((daysStaff.toLowerCase().indexOf(day.toLowerCase())) >= 0) { // not be case sensitive
           staffAvailable++;
         }
-
       });
-
     });
 
-    if (staffAvailable >= 3) {
-      result = true;
-    } else {
-      result = false;
-    }
+    result= staffAvailable >= 3? true: false;
   }
+
   return result;
 };
 
