@@ -1,7 +1,6 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-
   const numfind = num => num === n; // num should be equal to n
   let index = nums.findIndex(numfind); // First index that satisfies the provided testing function. If it don't find an element, return -1
 
@@ -10,7 +9,6 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-
   const frequencies = { // Create a frequencies object
     1: 0,
     0: 0
@@ -70,6 +68,7 @@ const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   let findit = false;
+
   for (let key in haystack) { // loop to know the keys of the object
     if (((haystack[key].toString()).toUpperCase()).indexOf(searchTerm.toUpperCase()) >= 0) { // Take the values of the key and check if the searchTerm is in the value.
       // Use toUpperCase() not to be case sensitive    
@@ -82,7 +81,6 @@ const findNeedle = (haystack, searchTerm) => {
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-
   const frequencies = {};
   const word = str.replace(/[^a-zA-Z ]/g, "").split(" "); // Ignore punctuation and convert the sentence into an array of words
 
@@ -98,7 +96,7 @@ const getWordFrequencies = str => {
         frequencies[wordLowerCase] += 1;
     }*/
   }
-  
+
   return frequencies;
 };
 
